@@ -12,6 +12,7 @@ namespace TestProject
     public partial class Form1 : Form
     {
         GCTest mGCTest;
+        ThreadTest mThreadTest = new ThreadTest();
 
         public Form1()
         {
@@ -20,7 +21,7 @@ namespace TestProject
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Console.Beep();
+            //Console.Beep();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,6 +37,16 @@ namespace TestProject
         private void button3_Click(object sender, EventArgs e)
         {
             mGCTest = new GCTest();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            mThreadTest.GetThreadPoolConfigs();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            mThreadTest.StartThreadSimpleTest();
         }
     }
 }
