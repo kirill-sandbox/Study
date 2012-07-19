@@ -48,5 +48,30 @@ namespace TestProject
         {
             mThreadTest.StartThreadSimpleTest();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            mThreadTest.StartThreadTest();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            int a = 10;
+
+            Console.WriteLine(a.ToString());
+
+            System.Threading.ThreadPool.QueueUserWorkItem(delegate(Object obj) {
+                a = 5; // Анонимная функция имеет доступ к локальным переменным метода!
+            },null);
+
+            System.Threading.Thread.Sleep(10);
+
+            Console.WriteLine(a.ToString());
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            mThreadTest.TestAsyncFileRead();
+        }
     }
 }

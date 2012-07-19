@@ -3,14 +3,66 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.IO;
 
 namespace TestProject
 {
     class ThreadTest
     {
+        struct AsyncFileReadResult
+        {
+            public int sz;
+            public byte[] buf;
+            public FileStream fs;
+        }
+
+        public void TestAsyncFileRead()
+        {
+            AsyncFileReadResult afrr = new AsyncFileReadResult();
+            afrr.sz = 15;
+            afrr.buf = new byte[15];
+            afrr.fs = new FileStream(@"..\test.txt", FileMode.Open, FileAccess.Read, FileShare.Read, afrr.sz, FileOptions.Asynchronous);
+            afrr.fs.BeginRead(afrr.buf, 0, afrr.sz, TestAsyncFileReadResult, afrr);
+        }
+
+        private void TestAsyncFileReadResult(IAsyncResult res)
+        {
+            AsyncFileReadResult afrr = (AsyncFileReadResult)res.AsyncState;
+            Int32 bytesRead = afrr.fs.EndRead(res);
+            afrr.fs.Close();
+            Console.WriteLine(bytesRead.ToString());
+
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in afrr.buf) // Возможно не стоит так делать... надо уточнить
+            {
+                sb.Append((char)b);
+            }
+
+            Console.WriteLine(sb.ToString());
+        }
+
         public ThreadTest()
         {
-            
+            // System.Threading.Timer ставит задачи в Пул потоков
+            // System.Windows.Forms.Timer работает на основе SetTimer windows (WM_TIMER)
+        }
+
+        public void StartThreadTest()
+        {
+            Thread thread = new Thread(SecondAsyncJob); // Выделенный поток
+            thread.Start("1");
+            Thread.Sleep(100);
+            Console.WriteLine("2");
+            thread.Join(); // Дождаться завершения
+            Console.WriteLine("2");
+
+        }
+
+        private static void SecondAsyncJob(Object state)
+        {
+            Console.WriteLine(state.ToString());
+            Thread.Sleep(2000);
+            Console.WriteLine(state.ToString());
         }
 
         public void StartThreadSimpleTest()
