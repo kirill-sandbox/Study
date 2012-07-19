@@ -1,0 +1,9 @@
+C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\bin\Release\TestProject.exe
+C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\bin\Release\TestProject.pdb
+C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Release\TestProject.Form1.resources
+C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Release\TestProject.Properties.Resources.resources
+C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Release\TestProject.exe
+C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Release\TestProject.pdb

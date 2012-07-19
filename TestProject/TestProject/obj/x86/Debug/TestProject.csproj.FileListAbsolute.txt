@@ -6,3 +6,4 @@ C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Debug\Gener
 C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Debug\TestProject.exe
 C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Debug\TestProject.pdb
+C:\Users\Byte\Documents\GitHub\Study\TestProject\TestProject\obj\x86\Debug\TestProject.Form1.resources
