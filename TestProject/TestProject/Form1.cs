@@ -60,9 +60,10 @@ namespace TestProject
 
             Console.WriteLine(a.ToString());
 
-            System.Threading.ThreadPool.QueueUserWorkItem(delegate(Object obj) {
+            System.Threading.ThreadPool.QueueUserWorkItem(delegate(Object obj)
+            {
                 a = 5; // Анонимная функция имеет доступ к локальным переменным метода!
-            },null);
+            }, null);
 
             System.Threading.Thread.Sleep(10);
 
@@ -77,6 +78,11 @@ namespace TestProject
         private void button9_Click(object sender, EventArgs e)
         {
             mThreadTest.AcyncMathTest();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            DelegateTest test = new DelegateTest();
         }
     }
 }

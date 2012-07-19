@@ -9,6 +9,44 @@ namespace TestProject
 {
     class ThreadTest
     {
+        public sealed class Singleton // sealed не позволяет создать дочерний от Singleton класс
+        {
+            private static Object locker = new Object();
+            private static volatile Singleton mInstance;
+            private Singleton() { }
+            public static Singleton instance
+            {
+                get
+                {
+                    if (mInstance == null)
+                    {
+                        lock (locker)
+                        {
+                            if (mInstance == null)
+                            {
+                                mInstance = new Singleton();
+                            }
+                        }
+                    }
+                    return mInstance;
+                }
+            }
+        }
+
+        // Второй вариант - компилятор сам создаст при первом обращении
+        public sealed class Singleton2
+        {
+            private static Singleton2 mInstance = new Singleton2();
+            private Singleton2() { }
+            public static Singleton2 instance
+            {
+                get
+                {
+                    return mInstance;
+                }
+            }
+        }
+
         internal delegate Int64 AcyncMathDeligate(Int64 n);
 
         struct AsyncFileReadResult
@@ -53,11 +91,30 @@ namespace TestProject
 
         public void TestAsyncFileRead()
         {
-            AsyncFileReadResult afrr = new AsyncFileReadResult();
-            afrr.sz = 15;
-            afrr.buf = new byte[15];
-            afrr.fs = new FileStream(@"..\test.txt", FileMode.Open, FileAccess.Read, FileShare.Read, afrr.sz, FileOptions.Asynchronous);
-            afrr.fs.BeginRead(afrr.buf, 0, afrr.sz, TestAsyncFileReadResult, afrr);
+            lock (this) // В данном случае бесполезно. Это аналог synchronized в java
+            {
+                AsyncFileReadResult afrr = new AsyncFileReadResult();
+                afrr.sz = 15;
+                afrr.buf = new byte[15];
+                afrr.fs = new FileStream(@"..\test.txt", FileMode.Open, FileAccess.Read, FileShare.Read, afrr.sz, FileOptions.Asynchronous);
+                afrr.fs.BeginRead(afrr.buf, 0, afrr.sz, TestAsyncFileReadResult, afrr);
+            }
+
+            TestMethod();
+        }
+
+        private static Object locker = new Object();
+        public static void TestMethod()
+        {
+            lock (typeof(ThreadTest)) // Для синхронизации статических методов и свойств можно делать так
+            {
+                // код...
+            }
+
+            lock (locker) // Или так. В lock нельзя передавать value - типы!
+            {
+                // код...
+            }
         }
 
         private void TestAsyncFileReadResult(IAsyncResult res)
