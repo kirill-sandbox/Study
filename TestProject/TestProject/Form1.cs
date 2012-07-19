@@ -73,5 +73,10 @@ namespace TestProject
         {
             mThreadTest.TestAsyncFileRead();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            mThreadTest.AcyncMathTest();
+        }
     }
 }

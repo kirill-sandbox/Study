@@ -9,11 +9,46 @@ namespace TestProject
 {
     class ThreadTest
     {
+        internal delegate Int64 AcyncMathDeligate(Int64 n);
+
         struct AsyncFileReadResult
         {
             public int sz;
             public byte[] buf;
             public FileStream fs;
+        }
+
+        public Int64 AcyncMath(Int64 n)
+        {
+            Int64 sum = 0;
+            for (Int64 i = 0; i <= n; i++)
+            {
+                checked // При переполнение будет исключение, а не просто перезапись sum
+                {
+                    sum += i;
+                }
+            }
+            return sum;
+        }
+
+        public void AcyncMathTest() // В принципе аналогично операциям воода-вывода
+        {
+            AcyncMathDeligate acyncMathDeligate = AcyncMath;
+            acyncMathDeligate.BeginInvoke(1000000000, AcyncMathTestResult, acyncMathDeligate); // При значении 100000000000 EndInvoke вернёт исключение переполнения
+        }
+
+        private void AcyncMathTestResult(IAsyncResult res)
+        {
+            AcyncMathDeligate acyncMathDeligate = (AcyncMathDeligate)res.AsyncState;
+            try
+            {
+                Int64 sum = acyncMathDeligate.EndInvoke(res);
+                Console.WriteLine(sum.ToString());
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
 
         public void TestAsyncFileRead()
