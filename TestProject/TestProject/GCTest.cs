@@ -41,17 +41,29 @@ namespace TestProject
 
         public void TimerCreate()
         {
-            Timer t = new Timer(TimerCallback, null, 0, 2000);
-            Thread.Sleep(5000);
-            t.Dispose();
-            Console.WriteLine("Stop");
+            using (Timer t = new Timer(TimerCallback, null, 0, 2000))
+            {
+                Thread.Sleep(5000);
+                Console.WriteLine("Stop");
+            }
+            //Равносильно:
+            //Timer t;
+            //try
+            //{
+            //    t = new Timer(TimerCallback, null, 0, 2000);
+            //    Thread.Sleep(5000);
+            //    Console.WriteLine("Stop");
+            //}
+            //finally
+            //{
+            //    t.Dispose();
+            //}
         }
 
         public void TimerCreateWithBug()
         {
             Timer t = new Timer(TimerCallback, null, 0, 2000);
             Thread.Sleep(5000);
-            //t.Dispose();
             Console.WriteLine("Stop");
         }
 
