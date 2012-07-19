@@ -32,5 +32,10 @@ namespace TestProject
         {
             mGCTest = new GCTest(false);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mGCTest = new GCTest();
+        }
     }
 }

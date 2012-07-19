@@ -8,6 +8,19 @@ namespace TestProject
 {
     class GCTest
     {
+        class ObjectWithFinalizer
+        {
+            public ObjectWithFinalizer()
+            {
+                Console.WriteLine("Construct");
+            }
+
+            ~ObjectWithFinalizer()
+            {
+                Console.WriteLine("Finalize");
+            }
+        }
+
         public GCTest(Boolean bug)
         {
             if (bug)
@@ -18,6 +31,12 @@ namespace TestProject
             {
                 TimerCreate();
             }
+        }
+
+        public GCTest()
+        {
+            new ObjectWithFinalizer();
+            Timer t = new Timer(Collect, null, 2000, 2000);
         }
 
         public void TimerCreate()
@@ -39,6 +58,11 @@ namespace TestProject
         public void TimerCallback(Object obj)
         {
             Console.WriteLine("TimerCallback");
+            GC.Collect();
+        }
+
+        public void Collect(Object obj)
+        {
             GC.Collect();
         }
     }
