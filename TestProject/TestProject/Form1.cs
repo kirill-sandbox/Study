@@ -84,5 +84,10 @@ namespace TestProject
         {
             DelegateTest test = new DelegateTest();
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            ClassTest.RunTests();
+        }
     }
 }
