@@ -1,0 +1,2 @@
+MonoTestApp.Activity1;monotestapp.Activity1
+MonoTestApp.Activity1.MyButton;monotestapp.Activity1_MyButton

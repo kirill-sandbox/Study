@@ -1,0 +1,14 @@
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\bin\Debug\MonoTestApp.dll
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\bin\Debug\MonoTestApp.pdb
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\bin\Debug\MonoTestApp.dll.mdb
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\bin\Debug\MonoTestApp.MonoTestApp.apk
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\bin\Debug\MonoTestApp.MonoTestApp-Signed.apk
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\obj\Debug\MonoTestApp.dll
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\obj\Debug\MonoTestApp.pdb
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\obj\Debug\android\bin\MonoTestApp.MonoTestApp.apk
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\obj\Debug\res\layout\main.axml
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\obj\Debug\res\values\strings.xml
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\obj\Debug\res\drawable\icon.png
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\obj\Debug\R.cs.flag
+C:\Users\Byte\Documents\GitHub\Study\MonoTestApp\MonoTestApp\obj\Debug\uploadflags.txt
